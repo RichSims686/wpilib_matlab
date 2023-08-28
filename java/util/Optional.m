@@ -15,7 +15,11 @@ classdef Optional < handle
 
     methods
         function this = Optional(value)
-            this.value = value;
+            if ~nargin
+                this.value = [];
+            else
+                this.value = value;
+            end
         end
 
         function rv = isPresent(this)

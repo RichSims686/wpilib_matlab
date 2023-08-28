@@ -12,7 +12,8 @@ classdef Discretization
         % @return a Pair representing discA and discB.
 
         function [Ad, Bd] = discretizeAB(A, B, dtSeconds)
-            sysd = ss(A,B,1,0,dtSeconds);   % discrete system
+            sysc = ss(A,B,1,0);             % continuous system
+            sysd = c2d(sysc, dtSeconds);    % discrete system
             Ad = sysd.A;
             Bd = sysd.B;
         end
